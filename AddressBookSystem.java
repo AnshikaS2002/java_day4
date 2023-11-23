@@ -54,10 +54,10 @@ public class AddressBookSystem {
         Map<String, AddressBookSystem> dataMap = new HashMap<String, AddressBookSystem>();
 
         while (true) {
-            System.out.println("Enter 1 to add, 2 to edit, 3 to exit");
+            System.out.println("Enter 1 to add, 2 to edit, 3 to delete, 4 to exit");
             int option = scanner.nextInt();
             scanner.nextLine();
-            if (option == 3)
+            if (option == 4)
                 break;
             System.out.println("Please enter the first name:");
             String firstName = scanner.nextLine();
@@ -78,6 +78,13 @@ public class AddressBookSystem {
                     } else
                         System.out.println("No user exists with this name");
                     break;
+
+                case 3:
+                    if (dataMap.containsKey(firstName)) {
+                        dataMap.remove(firstName);
+                    } else {
+                        System.out.println("No user exists with this name");
+                    }
 
                 default:
                     break;

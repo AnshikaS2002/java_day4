@@ -54,10 +54,10 @@ public class AddressBookSystem {
         Map<String, AddressBookSystem> dataMap = new HashMap<String, AddressBookSystem>();
 
         while (true) {
-            System.out.println("Enter 1 to add, 2 to edit, 3 to delete, 4 to exit");
+            System.out.println("Enter 1 to add, 2 to edit, 3 to delete, 4 to print addressBook, 5 to exit");
             int option = scanner.nextInt();
             scanner.nextLine();
-            if (option == 4)
+            if (option == 5)
                 break;
             System.out.println("Please enter the first name:");
             String firstName = scanner.nextLine();
@@ -86,18 +86,20 @@ public class AddressBookSystem {
                         System.out.println("No user exists with this name");
                     }
 
+                case 4:
+                    for (Map.Entry<String, AddressBookSystem> entry : dataMap.entrySet()) {
+                        System.out.println("Key: " + entry.getKey());
+                        AddressBookSystem contact = entry.getValue();
+                        System.out.println("Details: " + contact.firstName + " " + contact.lastName + ", " +
+                                contact.address + ", " + contact.city + ", " + contact.state + ", " +
+                                contact.zip + ", " + contact.phoneNumber + ", " + contact.email);
+                    }
+
                 default:
                     break;
             }
         }
 
-        for (Map.Entry<String, AddressBookSystem> entry : dataMap.entrySet()) {
-            System.out.println("Key: " + entry.getKey());
-            AddressBookSystem contact = entry.getValue();
-            System.out.println("Details: " + contact.firstName + " " + contact.lastName + ", " +
-                    contact.address + ", " + contact.city + ", " + contact.state + ", " +
-                    contact.zip + ", " + contact.phoneNumber + ", " + contact.email);
-        }
         scanner.close();
     }
 }

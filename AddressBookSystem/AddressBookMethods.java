@@ -13,6 +13,11 @@ public class AddressBookMethods {
         System.out.println("Please enter the first name: ");
         String firstName = scanner.hasNextLine() ? scanner.nextLine() : "";
 
+        if (dataMap.containsKey(firstName)) {
+            System.out.println("User already exists with this name");
+            return;
+        }
+
         System.out.println("Please enter the last name: ");
         String lastName = scanner.hasNextLine() ? scanner.nextLine() : "";
 
